@@ -1,0 +1,39 @@
+{
+  "data": [
+    {
+      "name": "Pope Francis",
+      "description": null,
+      "comment": "He’s talking tough on clergy sexual abuse, but is he just another papal pervert protector? (thumbs down) or a true pedophile punishing pontiff? (thumbs up)",
+      "image": "./images/Pope.png",
+      "main": true
+    },
+    {
+      "name": "Kanye West",
+      "description": "1 month ago in Entertainment",
+      "comment": "Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aenean eu velit libero.",
+      "image": "./images/Kanye.png",
+      "main": false
+    },
+    {
+      "name": "Mark Zuckerberg",
+      "description": "1 month ago in Business",
+      "comment": "Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aenean eu velit libero.",
+      "image": "./images/Mark.png",
+      "main": false
+    },
+    {
+      "name": "Cristina Fernández de Kirchner",
+      "description": "1 month ago in Politics",
+      "comment": "Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aenean eu velit libero.",
+      "image": "./images/Cristina.png",
+      "main": false
+    },
+    {
+      "name": "Malala Yousafzai",
+      "description": "1 month ago in Entertainment",
+      "comment": "Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aenean eu velit libero.",
+      "image": "./images/Malala.png",
+      "main": false
+    }
+  ]
+}
