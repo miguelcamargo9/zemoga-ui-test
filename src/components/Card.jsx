@@ -69,14 +69,14 @@ class Card extends React.Component {
     const widthLike =
       likePointsPercent >= 80
         ? 75
-        : likePointsPercent === 0
+        : likePointsPercent <= 20
         ? 25
         : likePointsPercent;
 
     const widthDisLike =
       dislikePointsPercent >= 80
         ? 75
-        : dislikePointsPercent === 0
+        : dislikePointsPercent <= 20
         ? 25
         : dislikePointsPercent;
 

@@ -5,6 +5,7 @@ import { Router, Route, Switch } from "react-router-dom";
 import { createBrowserHistory } from "history";
 
 import Home from "./views/Home";
+import White from "./views/White";
 import * as serviceWorker from "./serviceWorker";
 
 import "./assets/css/main.css";
@@ -14,6 +15,12 @@ const history = createBrowserHistory();
 ReactDOM.render(
   <Router history={history}>
     <Switch>
+      <Route path="/terms" component={White} />
+      <Route path="/privacy" component={White} />
+      <Route path="/contact" component={White} />
+      <Route path="/pasttrials" component={White} />
+      <Route path="/howitworks" component={White} />
+      <Route path="/login" component={White} />
       <Route path="/" component={Home} />
     </Switch>
   </Router>,

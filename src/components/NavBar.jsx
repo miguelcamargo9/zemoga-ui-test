@@ -1,31 +1,87 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faAlignJustify } from "@fortawesome/free-solid-svg-icons";
 
-function NavBar() {
-  return (
-    <div className="container">
-      <div className="navBar">
-        <div className="logo">
-          <h1>Rule of Thumb.</h1>
+class NavBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isActive: ""
+    };
+    this.viewMenu = this.viewMenu.bind(this);
+  }
+
+  viewMenu() {
+    const { isActive } = this.state;
+    const newIsActive = isActive === "" ? "is-active" : "";
+    this.setState({ isActive: newIsActive });
+  }
+
+  render() {
+    const { isActive } = this.state;
+    return (
+      <div className="container">
+        <div
+          className="burger-menu"
+          onClick={() => {
+            this.viewMenu();
+          }}
+        >
+          <FontAwesomeIcon icon={faAlignJustify} />
         </div>
-        <nav className="menu">
-          <ul>
-            <li>
-              <a href="#">Past Trials</a>
-            </li>
-            <li>
-              <a href="#">How It Works</a>
-            </li>
-            <li>
-              <a href="#">Log In/Sing Up</a>
-            </li>
-            <li>
-              <button>Search</button>
-            </li>
-          </ul>
-        </nav>
+        <header className="navBar">
+          <div className="logo">
+            <h1>Rule of Thumb.</h1>
+          </div>
+          <nav className={"menu " + isActive}>
+            <ul>
+              <li>
+                <Link
+                  to={{
+                    pathname: "/pasttrials",
+                    state: {
+                      title: "Past Trials"
+                    }
+                  }}
+                >
+                  Past Trials
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to={{
+                    pathname: "/howitworks",
+                    state: {
+                      title: "How It Works"
+                    }
+                  }}
+                >
+                  How It Works
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to={{
+                    pathname: "/login",
+                    state: {
+                      title: "Log In/Sing Up"
+                    }
+                  }}
+                >
+                  Log In/Sing Up
+                </Link>
+              </li>
+              <li>
+                <FontAwesomeIcon icon={faSearch} />
+              </li>
+            </ul>
+          </nav>
+        </header>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default NavBar;

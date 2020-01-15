@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -6,24 +7,47 @@ function Footer() {
       <nav className="footermenu">
         <ul>
           <li>
-            <a href="#">Terms and Conditions</a>
+            <Link
+              to={{
+                pathname: "/terms",
+                state: {
+                  title: "Terms and Conditions"
+                }
+              }}
+            >
+              Terms and Conditions
+            </Link>
           </li>
           <li>
-            <a href="#">Privacy Policy</a>
+            <Link
+              to={{
+                pathname: "/privacy",
+                state: {
+                  title: "Privacy Policy"
+                }
+              }}
+            >
+              Privacy Policy
+            </Link>
           </li>
           <li>
-            <a href="#">Contact Us</a>
+            <Link
+              to={{
+                pathname: "/contact",
+                state: {
+                  title: "Contact Us"
+                }
+              }}
+            >
+              Contact Us
+            </Link>
           </li>
         </ul>
       </nav>
-      <div className="footermenu">
+      <div className="footericons">
         <span>Follow Us</span>
-        <img
-          className="followicon"
-          src="./images/Facebook.png"
-          alt="Facebook"
-        />
-        <img className="followicon" src="./images/Twitter.png" alt="twitter" />
+        <img className="faceicon" src="./images/Facebook.png" alt="Facebook" />
+        <img className="twittericon" src="./images/Twitter.png" alt="twitter" />
       </div>
     </footer>
   );
