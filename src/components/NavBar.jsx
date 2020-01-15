@@ -5,7 +5,7 @@ function NavBar() {
     <div className="container">
       <div className="navBar">
         <div className="logo">
-          <h1>Rule of Thumb</h1>
+          <h1>Rule of Thumb.</h1>
         </div>
         <nav className="menu">
           <ul>

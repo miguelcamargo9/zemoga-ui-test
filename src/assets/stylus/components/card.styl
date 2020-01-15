@@ -1,6 +1,8 @@
 .card
     position relative
     padding-top 50%
+    background linear-gradient(to top, black, white);
+
     .imageperson 
         position absolute
         top 0
@@ -12,29 +14,77 @@
     .cardcontent
         color white
         position relative
-        padding 0 40px 20px 
+        padding 0 40px 20px
 
     .actions
         display flex
 
     .likebutton
-        width 40px 
+        width 30px 
         display inline-block
         background $likecolor
         margin-right 10px
+
+    .likebutton button
+        padding 3px
+        border none
+
+    .likebutton button:hover 
+        cursor pointer
+        background-color: #168581
+
+    .dislike button:hover
+        background-color: #b47b16
+
+    .likebutton button:focus
+        outline-color white;
+        
+    .vote button
+        color white
+        height 33px
+        border 1 white
+        background rgba($graycardcolor, 0.2)
+    
+    .vote button:focus
+        outline-color white;
+
+    .likebutton button
+        background transparent
     
     .icon
         position absolute
         top 0
         left 0
+        display inline-block
+        margin-right 5px
     
     .like
         background $likecolor
+
+    .likebar
+        background rgba($likeselectcolor, $opacitybuttons)
     
     .dislike
         background $dislikecolor
 
+    .dislikebar
+        background rgba($dislikeselectcolor, $opacitybuttons)
+
     .votebar
         position relative
         display flex
+
+    .resultbar
+        font-size 28px
+        font-weight 300
+        color white
+        padding 7px
+        @media only screen and (max-width: 600px)
+            font-size 18px
+        
+    .resultbar img
+        width 22px
+        margin-right 5px
+        @media only screen and (max-width: 600px)
+            width 18px
         

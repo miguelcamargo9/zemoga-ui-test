@@ -1,62 +1,93 @@
 import React from "react";
-import data from "../static/data/data";
 
 import Card from "../components/Card";
 import MainCard from "../components/MainCard";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 
+import { getAllPeople } from "../services/peopleService";
+
 class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      people: data
+      people: [],
+      pope: {}
     };
   }
 
+  componentDidMount() {
+    getAllPeople()
+      .then(infoPeople => {
+        console.log(infoPeople);
+        const people = infoPeople.data.people;
+        const pope = people.filter(person => person.main)[0];
+        this.setState({ people, pope });
+      })
+      .catch(e => console.log(e));
+  }
+
   buildCards() {
-    return this.state.people.data.map((person, key) => {
-      if (!person.main) {
-        const likePercent = (70 * 100) / (50 + 50);
-        const dislikePercent = (50 * 100) / (50 + 50);
-        return (
-          <Card
-            key={key}
-            title={person.name}
-            image={person.image}
-            description={person.description}
-            comment={person.comment}
-            dislikepoints={Math.round(dislikePercent * 100) / 100}
-            likepoints={Math.round(likePercent * 100) / 100}
-          ></Card>
-        );
-      }
-    });
+    if (this.state.people.length > 0) {
+      const people = this.state.people.map((person, key) => {
+        if (!person.main) {
+          let likePointsPercent = 0;
+          let dislikePointsPercent = 0;
+          const { likepoints, dislikepoints } = person;
+          const totalpoints = likepoints + dislikepoints;
+          if (totalpoints === 0) {
+            likePointsPercent = 50;
+            dislikePointsPercent = 50;
+          } else {
+            likePointsPercent = Math.round((likepoints * 100) / totalpoints);
+            dislikePointsPercent = 100 - likePointsPercent;
+          }
+          return (
+            <Card
+              key={key}
+              id={person.id}
+              title={person.name}
+              image={person.image}
+              description={person.description}
+              comment={person.comment}
+              likepoints={likepoints}
+              likePointsPercent={likePointsPercent}
+              dislikepoints={dislikepoints}
+              dislikePointsPercent={dislikePointsPercent}
+            ></Card>
+          );
+        }
+      });
+      return people;
+    }
+    return [];
   }
 
   render() {
-    const pope = this.state.people.data.filter(person => person.main);
-
+    const { pope } = this.state;
     return (
       <div className="home">
         <NavBar></NavBar>
         <MainCard
-          title={pope[0].name}
-          image={pope[0].image}
-          comment={pope[0].comment}
+          title={pope.name}
+          image={pope.image}
+          comment={pope.comment}
         ></MainCard>
         <div className="container">
           <div className="messagebox">
-            <div className="speakout">Speak out. Be heard. Be Counted</div>
+            <div className="speakout">
+              Speak out. Be heard. <br />
+              <h1>Be Counted</h1>
+            </div>
             <div className="thumb">
-              Rule of Thumb is a crowd sourced court of public opinion where
-              anyone and everyone can speak out and speak freely. It’s easy: You
-              share your opinion, we analyze and put the data in a public
-              report.
+              <p>
+                Rule of Thumb is a crowd sourced court of public opinion where
+                anyone and everyone can speak out and speak freely. It’s easy:
+                You share your opinion, we analyze and put the data in a public
+                report.
+              </p>
             </div>
-            <div className="closemessage">
-              <button>X</button>
-            </div>
+            <div className="closemessage">X</div>
           </div>
         </div>
         <div className="container">
@@ -65,8 +96,15 @@ class Home extends React.Component {
         </div>
         <div className="container">
           <div className="register">
-            <h1>Is there anyone else you would want us to add?</h1>
-            <button className="regbutton">Submit Name</button>
+            <img
+              src="./images/people.png"
+              alt="people"
+              className="imagepeople"
+            />
+            <div className="registercontent">
+              <p>Is there anyone else you would want us to add?</p>
+              <button className="regbutton">Submit Name</button>
+            </div>
           </div>
         </div>
         <div className="container">

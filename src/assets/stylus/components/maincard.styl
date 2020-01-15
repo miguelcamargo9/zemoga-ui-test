@@ -1,6 +1,6 @@
 .maincard
     position relative
-    padding-top 10%
+    padding-top 30%
 
     .imageperson 
         position absolute
@@ -9,32 +9,55 @@
         width 100%
         height 100%
         object-fit cover
+        border solid
 
     .cardcontent
         width 35%
         color white
         position relative
-        background-color gray
-        opacity 70%
+        background-color rgba($graycardcolor, $opacitybuttons)
         margin-left 100px
-        padding 0 40px 20px
+        padding 30px 40px 20px
+        @media only screen and (max-width: 600px)
+            width 75%
+            margin-left 20px
+            padding 30px 40px 20px
 
-    .cardcontent span 
-        opacity 100%
+    .cardcontent span
+        font-size 16px
+        font-weight 300
+        @media only screen and (max-width: 600px)
+            font-size 12px
+
+    .cardcontent p
+        font-size 20px
+        font-weight 300
+        @media only screen and (max-width: 600px)
+            font-size 14px
+
+    .cardcontent strong
+        font-weight 700
 
     .actions
+        width 35%
+        position relative
         display flex
+        margin-left 100px
+        @media only screen and (max-width: 600px)
+            width 75%
+            margin-left 20px
 
     .likebutton
-        width 40px 
+        width 50%
         display inline-block
-        background $likecolor
+        padding 5% 0 5% 20%
+        background-color rgba($likecolor, $opacitybuttons)
 
     .like
-        background $likecolor
+        background  rgba($likecolor, $opacitybuttons)
     
     .dislike
-        background $dislikecolor
+        background rgba($dislikecolor, $opacitybuttons)
 
     .votebar
         display flex
