@@ -1,20 +1,38 @@
 {
   "name": "zemoga-ui-test",
+  "author": {
+    "name": "Miguel Camargo",
+    "email": "miguelcamargo9@gmail.com"
+  },
+  "license": "MIT",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.26",
+    "@fortawesome/free-solid-svg-icons": "^5.12.0",
+    "@fortawesome/react-fontawesome": "^0.1.8",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "axios": "^0.19.1",
+    "global": "^4.4.0",
+    "history": "^4.10.1",
+    "npm-run-all": "^4.1.5",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-scripts": "3.3.0"
+    "react-router": "^5.1.2",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.3.0",
+    "serialize-javascript": "^2.1.2",
+    "stylus": "^0.54.7"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build-css": "stylus -c src/assets/stylus/ --out src/assets/css",
+    "watch-css": "yarn run build-css && stylus -c -w src/assets/stylus --out src/assets/css",
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
+    "build-js": "react-scripts build",
+    "build": "npm-run-all build-css build-js"
   },
   "eslintConfig": {
     "extends": "react-app"
